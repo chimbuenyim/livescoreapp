@@ -1,0 +1,1 @@
+import livescore from './api'
