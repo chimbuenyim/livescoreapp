@@ -463,3 +463,25 @@ body{
    
 
 }
+
+.loader{
+    width: 200px;
+    height: 200px;
+    border: none;
+    border-right: 1px solid coral;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    animation: rotate 1s linear 0s infinite;
+    position: absolute;
+    left:50%;
+    top:30%;
+    transform: translate(-50%,-50%);
+}
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(359deg);
+    }
+}

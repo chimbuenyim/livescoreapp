@@ -29,8 +29,8 @@ class LivescoresData {
   }
   async getFixtures(league_id) {
     let time = new Date()
-    let fromDate = '2022-01-' + (time.getDay() - 7)
-    let toDate = '2022-01-' + (time.getDay() + 7)
+    let fromDate = '2022-01-' + (time.getDate() - 2)
+    let toDate = '2022-01-' + (time.getDate() + 4)
     let fixtures = (
       await this.fetchData({ met: 'Fixtures', from: fromDate, to: toDate })
     ).result
@@ -43,10 +43,18 @@ class LivescoresData {
     })
     return { fixtures: fixtures, live: live }
   }
+  async leagueId(league_name){
+    let leagues = (await this.fetchData({ met: 'Leagues' })).result
+    let toReturn = leagues
+      .filter((league) => {
+        return league.league_name == league_name
+      })[0].league_key
+    return toReturn
+  }
   async getAllFixtures() {
     let time = new Date()
-    let fromDate = '2022-01-' + (time.getDay() - 3)
-    let toDate = '2022-01-' + (time.getDay() + 3)
+    let fromDate = '2022-01-' + (time.getDate() - 3)
+    let toDate = '2022-01-' + (time.getDate() + 3)
     let fixtures = (
       await this.fetchData({ met: 'Fixtures', from: fromDate, to: toDate })
     ).result
