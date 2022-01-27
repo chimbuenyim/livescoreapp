@@ -1,1 +1,1 @@
-import livescore from './api'
+import livescore from './api.js'
