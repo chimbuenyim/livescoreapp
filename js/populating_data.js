@@ -4,19 +4,18 @@ import livescore from './api.js'
 // this is vision's work. DO NOT TOUCH
 let allMatches = [];
 let leagueIds = []
-let leagues = []
 async function getMatches(){
     // let leagues = (await livescore.getLeagues(8)).map(score => score.league_name)
     let leaguesDisplay = ['La Liga', 'Serie A', 'WC Qualification South America']
     let matches = {}
-    leagues = (await livescore.getLeagues(8)).map(score => score.league_name)
+    let allf = await livescore.getAllFixtures()
+    await livescore.getLeagues(8)
     for(let league of leaguesDisplay){
-        let id = await livescore.leagueId(league)
-        let fixture = await livescore.getFixtures(id)
+        let id = livescore.leagueId(league)
+        let fixture = livescore.getFixtures(String(id))
         matches[league] = fixture
         leagueIds[league] = id
         allMatches.push(fixture)
-        console.log(allMatches,leagues)
     }
     return matches
 }
@@ -24,10 +23,11 @@ async function getMatches(){
 function populateMatches(matches){
     let loader = document.querySelector('.loader')
     loader.style.display = 'none'
-    let display = document.querySelector('.displaySection')
+    let display = document.querySelector('.container')
     let leagues = {}
+    display.innerHTML = ''
     for(let league in matches){
-        if(matches[league].fixtures == []) continue
+        if(matches[league].length == 0) continue
         let card = document.createElement('div')
         card.classList.add('card')
         card.innerHTML += `
@@ -38,7 +38,7 @@ function populateMatches(matches){
 </header>`
         console.log(card)
         for(let _ = 0; _ < 5;_++){
-            let fixture = matches[league].fixtures[_]
+            let fixture = matches[league][_]
             if(fixture){
                 let div = document.createElement('div')
                 div.classList.add('fixture')
@@ -65,29 +65,58 @@ function populateMatches(matches){
 function getSpecificMatches(date){
     let leaguesDisplay = ['La Liga', 'Serie A', 'WC Qualification South America']
     let matches = {}
+    let idx = 0
+    let min = leaguesDisplay[0]
+    let minidx = 0
     for(let league of leaguesDisplay){
-        console.log('fixture')
         let id = leagueIds[league]
-        matches[league] = {fixtures: allMatches.filter(match => match.league_key == id),
-                          live : allMatches.filter(match => match.league_key == id && match.event_live == "1")}
-        matches[league].fixtures = matches[league].fixtures.filter(el => el.event_date == date)
-        console.log(id)
+        matches[league] = allMatches[idx].filter(match => match.event_date == String(date))
+        idx += 1
     }
     console.log(matches)
     return matches
 }
 
+
+window.addEventListener('load', e => {
+    let idx = -3
+    document.querySelectorAll('.clickable').forEach(el => {
+        el.textContent = plus('Jan '+ new Date().getDate(),idx)
+        idx += 1
+    })
+})
+
 getMatches()
     .then(() => {
-        let date = new Date()
-        let result = getSpecificMatches('2022-01-'+date.getDate())
-        populateMatches(result)
-        document.querySelectorAll('.date').forEach(el => {
+        document.querySelectorAll('.clickable').forEach(el => {
             el.addEventListener('click', async e => {
-                let result = getSpecificMatches('2022-01-'+eval(String(date.getDate()) + e.target.classList[e.target.classList.length - 1]))
+                console.log(e.target.classList)
+                let day = eval(date.getDate() + e.target.classList[e.target.classList.length - 1].split('val')[1])
+                let result = getSpecificMatches('2022-01-'+ day)
                 populateMatches(result)
             })
         })
+        let date = new Date()
+        let result = getSpecificMatches('2022-01-'+date.getDate())
+        populateMatches(result)
     })
 
 
+function plus(date,num){
+    let datesMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    let dates = {'Jan':31,'Feb':28,'Mar':31,'Apr':30,'May':31,'Jun':30,'Jul':31,'Aug':31,'Sep':30,'Oct':31,'Nov':30,'Dec':31}
+    let dateMonth = date.split(' ')[0]
+    let dateDay = Number(date.split(' ')[1])
+    let newDate = ''
+    dateDay += num
+    if(dateDay > dates[dateMonth]){
+        newDate = datesMonths[datesMonths.indexOf(dateMonth) + 1] + ' ' + dateDay % dates[dateMonth]
+    }else{
+        newDate = dateMonth + ' ' + dateDay
+    }
+    return newDate
+}
+
+function getMatcheswithCountry(country){
+
+}
