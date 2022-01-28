@@ -30,6 +30,9 @@ class LivescoresData {
       })
     return toReturn
   }
+  async getAllLeagues(){
+    return (await this.fetchData({ met: 'Leagues' })).result
+  }
   getFixtures(league_id) {
     let fixtures = this.fixtures.filter((fixture) => {
       return fixture.league_key == league_id

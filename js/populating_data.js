@@ -4,11 +4,15 @@ import livescore from './api.js'
 // this is vision's work. DO NOT TOUCH
 let allMatches = [];
 let leagueIds = []
+let allf = []
+let country,league,curday
+let allleagues = []
 async function getMatches(){
     // let leagues = (await livescore.getLeagues(8)).map(score => score.league_name)
     let leaguesDisplay = ['La Liga', 'Serie A', 'WC Qualification South America']
     let matches = {}
-    let allf = await livescore.getAllFixtures()
+    allf = await livescore.getAllFixtures()
+    allleagues = await livescore.getAllLeagues()
     await livescore.getLeagues(8)
     for(let league of leaguesDisplay){
         let id = livescore.leagueId(league)
@@ -34,7 +38,7 @@ function populateMatches(matches){
 <header class="cardHeader">
 <span class="title">
     ${league}</span> 
-    <span class="headerDate">FEBRUARY 15</span>
+    <span class="headerDate"></span>
 </header>`
         console.log(card)
         for(let _ = 0; _ < 5;_++){
@@ -53,6 +57,10 @@ function populateMatches(matches){
         <span class="awayScore">${fixture.event_final_result.split('-')[1] || '?'}</span>
     </div>
     <span class="away">${fixture.event_away_team}</span>
+</div>
+
+<span class="time" style='width:150px'>${fixture.event_date}</span>
+
                 `
                 console.log('card')
                 card.appendChild(div)
@@ -62,15 +70,55 @@ function populateMatches(matches){
     }
 }
 
-function getSpecificMatches(date){
+function getSpecificMatches(date,country,curleague){
     let leaguesDisplay = ['La Liga', 'Serie A', 'WC Qualification South America']
     let matches = {}
     let idx = 0
-    let min = leaguesDisplay[0]
-    let minidx = 0
+    let valid = allMatches
+    if(country != null){
+        leaguesDisplay = []
+        valid = allf.filter(f => f.country_name == country)
+        valid.forEach(f => {
+            if(!leaguesDisplay.includes(f.league_name)){
+                leaguesDisplay.push(f.league_name)
+            }
+        })
+        let p = [];
+        for(let league of leaguesDisplay){
+            p.push(valid.filter(f => f.league_name == league))
+        }
+        valid = p
+    }else if(curleague != null){
+        leaguesDisplay = []
+        valid = allf.filter(f => f.league_name == curleague)
+        valid.forEach(f => {
+            if(!leaguesDisplay.includes(f.league_name)){
+                leaguesDisplay.push(f.league_name)
+            }
+        })
+        let p = [];
+        for(let league of leaguesDisplay){
+            p.push(valid.filter(f => f.league_name == league))
+        }
+        valid = p
+    }
+    
+    for(let league of leaguesDisplay){
+        let validM = valid[idx].filter(match => match.event_date == String(date))
+        matches[league] = validM
+        idx += 1
+    }
+    console.log(matches)
+    return matches
+}
+
+function getAllMatches(){
+    let leaguesDisplay = ['La Liga', 'Serie A', 'WC Qualification South America']
+    let matches = {}
+    let idx = 0
     for(let league of leaguesDisplay){
         let id = leagueIds[league]
-        matches[league] = allMatches[idx].filter(match => match.event_date == String(date))
+        matches[league] = allMatches[idx]
         idx += 1
     }
     console.log(matches)
@@ -82,23 +130,76 @@ window.addEventListener('load', e => {
     let idx = -3
     document.querySelectorAll('.clickable').forEach(el => {
         el.textContent = plus('Jan '+ new Date().getDate(),idx)
+        if(Array.from(el.classList).includes('today')){
+            el.textContent = 'Today'
+        }
         idx += 1
     })
 })
 
+function populateCountries(){
+    let countries = []
+    let leaguesByCountry = {}
+    allleagues.forEach(el => {
+        if(!countries.includes(el.country_name)){
+            countries.push(el.country_name)
+            leaguesByCountry[el.country_name] = []
+        }
+        leaguesByCountry[el.country_name].push(el.league_name)
+    })
+    for(let [country,leagues] of Object.entries(leaguesByCountry)){
+
+    }
+}
+
 getMatches()
     .then(() => {
-        document.querySelectorAll('.clickable').forEach(el => {
-            el.addEventListener('click', async e => {
-                console.log(e.target.classList)
-                let day = eval(date.getDate() + e.target.classList[e.target.classList.length - 1].split('val')[1])
-                let result = getSpecificMatches('2022-01-'+ day)
+        populateCountries()
+        let live = document.querySelectorAll('.live')
+        let home = document.querySelectorAll('.home')
+        let countries = document.querySelectorAll('.country')
+        let leagues = document.querySelectorAll('.league')
+        live.forEach(el =>el.addEventListener('click',e => {
+            let result = getSpecificMatches('2022-01-'+ new Date().getDate())
+            let nresult = {}
+            for(let [league,matches] of Object.entries(result)){
+                let match = matches.filter(el => el.event_live == "1")
+                nresult[league] = match
+            }
+            populateMatches(nresult)
+        }))
+        home.forEach(el => el.addEventListener('click',e => {
+            let result = getAllMatches()
+            populateMatches(result)
+        }))
+        countries.forEach(el => {
+            el.addEventListener('click',e => {
+                country = e.target.textContent
+                league = null
+                let result = getSpecificMatches(curday,country,league)
+                populateMatches(result)
+            })
+        })
+        leagues.forEach(el => {
+            el.addEventListener('click',e => {
+                league = e.target.textContent
+                country = null
+                let result = getSpecificMatches(curday,country,league)
                 populateMatches(result)
             })
         })
         let date = new Date()
         let result = getSpecificMatches('2022-01-'+date.getDate())
         populateMatches(result)
+        document.querySelectorAll('.clickable').forEach(el => {
+            el.addEventListener('click', async e => {
+                console.log(e.target.classList)
+                let day = eval(date.getDate() + e.target.classList[e.target.classList.length - 1].split('val')[1])
+                curday = '2022-01-'+day
+                let result = getSpecificMatches('2022-01-'+ day,country,league)
+                populateMatches(result)
+            })
+        })
     })
 
 
@@ -115,8 +216,4 @@ function plus(date,num){
         newDate = dateMonth + ' ' + dateDay
     }
     return newDate
-}
-
-function getMatcheswithCountry(country){
-
 }
