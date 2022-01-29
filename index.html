@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="./font/all.css" />
     <script src="./font/all.js" async="false"></script>
+    <script src="./app.js" async="true"></script>
   </head>
-  <body>
+  <body  class="body">
     <div class="bodyOverlay">
       <div class="mainContentContainer">
         <div class="header">
@@ -17,14 +18,42 @@
                 <marquee behavior="scroll" direction="left" scrollamount="30">
                    <span>GET YOUR LIVE SCORES.</span>   
                 </marquee>
+            </div> 
             </div>
-          
-        </div>
+            <div class="searchCont">
+
+               <div class="catergories">
+               <i class="fas fa-align-right"></i>
+              <span class="mobileMenuText">catergories</span>
+              </div>
+  
+
+              <div class="searchInputContainer">
+                <div class="searchI">
+                  <i class="fas   /* display: none; */fa-search"></i>
+                  <input type="search"
+                  id="searchInput"
+                 placeholder="Search your Fav! Team"
+                  > 
+                
+              </div>
+           
+              </div>
+
+            
+            </div>
+      
 
         <div class="mainContent">
-          <div class="catergoryContainer">
-            <div class="catergory">Home</div>
-            <div class="catergory">Live</div>
+          <div class="catergoryContainer catergoryContainerDisplay">
+            <div class="catergory  cat">
+              <a href="./">
+                <i class="fas fa-home tabIconView"></i>
+                <span class="tabText">Home</span>
+            </a></div>
+            <div class="catergory  cat"><a href="./">
+              <i class="fas fa-futbol tabIconView"></i>
+              <span class="tabText">Live</span></a></div>
             <details>
                 <summary class="catergory">England</summary>
                 <li class="subcatergory"> <a href="">text</a></li>
@@ -61,13 +90,14 @@
                   <a href=""> <span class="date">Jan 27</span></a>
                   <a href=""> <span class="date"> Jan 28</span></a>
               </div>
+
  
            
 
               <div class="card">
                 <header class="cardHeader">
                     <span class="title">
-                        CHAMPIONS LEAGUE-ROUND OF 16</span> 
+                       CHAMPIONS LEAGUE-ROUND OF 16 </span> 
                         <span class="headerDate">FEBRUARY 15</span>
                  </header> 
 
@@ -75,6 +105,7 @@
                     <span class="time">21:00</span>
 
                     <div class="matchFixture">
+                      <a href ="">
                         <span class="home"> Paris Saint-German</span>
                         <div class="score">  
                             <span class="homeScore">5</span>
@@ -82,6 +113,7 @@
                             <span class="awayScore">7</span>
                        </div>
                         <span class="away">Real Marid </span>
+                      </a>
                     </div>
 
 
@@ -102,6 +134,7 @@
         <span class="time">21:00</span>
 
         <div class="matchFixture">
+          <a href ="">
             <span class="home"> Man-City</span>
             <div class="score">  
                 <span class="homeScore">2</span>
@@ -109,7 +142,9 @@
                 <span class="awayScore">0</span>
            </div>
             <span class="away"> Fc Barcelona </span>
+          </a>
         </div>
+       
      </div>
         </div>
 
@@ -122,10 +157,11 @@
                     <span class="headerDate">January 15</span>
              </header> 
         
-             <div class="fixture">
+               <div class="fixture">
                 <span class="time">21:00</span>
         
-                <div class="matchFixture">
+               <div class="matchFixture">
+                <a href ="./"> 
                     <span class="home"> Tunisia</span>
                     <div class="score">  
                         <span class="homeScore">2</span>
@@ -133,26 +169,28 @@
                         <span class="awayScore">0</span>
                    </div>
                     <span class="away"> Nigeria </span>
+                  </a>
                 </div>
+                
         </div>
         </div>
 <!-- ----- -->
 
 <div class="mobileMenu">
-    <div class="catergories">
-      <i class="fas fa-align-right"></i> 
-      <span class="mobileMenuText">catergories</span>
-    </div>
     <div class="Home">
-      <i class="fas fa-home"></i>
+      <a href="">
+      <i class="fas fa-home mobileView-icon"></i>
       <span class="mobileMenuText">Home</span>
+    </a>
     </div>
-    <div class="live">
-      <i class="fas fa-futbol"></i>
-      <span class="mobileMenuText">Live</span>
+   
+    <div class="live">  <a href="">
+       <span class="mobileMenuText">
+       Live</span>
+      <i class="fas fa-futbol mobileView-icon"></i>
+    </a>
     </div>
-
-
+ 
     </div>
 
           </div>
