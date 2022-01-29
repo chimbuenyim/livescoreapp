@@ -17,10 +17,10 @@ livescore
 
       livescore.getLeagues(country_key).then((legs) => {
         legs.forEach((elem) => {
-          let { league_name, league_id } = elem
+          let { league_name, league_key } = elem
           let newLi = document.createElement('li')
 
-          newLi.id = league_id
+          newLi.id = league_key
           newLi.innerText = league_name
           newLi.classList.add('subcategory', 'league')
           newDetails.appendChild(newLi)
