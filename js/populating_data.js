@@ -44,7 +44,10 @@ function populateMatches(matches){
         for(let _ = 0; _ < 5;_++){
             let fixture = matches[league][_]
             if(fixture){
+                let a = document.createElement('a')
                 let div = document.createElement('div')
+                a.href = '/livescoreapp/matchdata.html?id=' + fixture.event_key
+                a.appendChild(div)
                 div.classList.add('fixture')
                 div.innerHTML += `
 <span class="time">${fixture.event_time}</span>
@@ -62,8 +65,11 @@ function populateMatches(matches){
 <span class="time" style='width:150px'>${fixture.event_date}</span>
 
                 `
+                
                 console.log('card')
-                card.appendChild(div)
+                card.appendChild(a)
+                a.style.color = 'white'
+                a.style.textDecoration = 'none'
             }
         }
         display.appendChild(card)

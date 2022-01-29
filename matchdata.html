@@ -6,19 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LiveScore</title>
     <link rel="stylesheet" href="./matchdata.css" />
+    <script src='./js/api.js' type="module"></script>
+    <script src='./js/formatch_data.js' type="module"></script>
   </head>
   <body>
     <div id="LiveScore" class="livescore">
       <div class="match-details-score black-row">
-        <span class="scheduled-time">20:00</span>
+        <span class="scheduled-time"></span>
         <div class="homevsaway">
-          <span class="home-team">West Bromwich</span>
+          <span class="home-team"></span>
           <div class="scores">
-            <span class="home-score">0</span>
+            <span class="home-score"></span>
             <span>-</span>
-            <span class="away-score">0</span>
+            <span class="away-score"></span>
           </div>
-          <span class="away-team">Preston North End</span>
+          <span class="away-team"></span>
         </div>
         <div class="empty">just empty space</div>
       </div>
@@ -34,31 +36,17 @@
         <div class="football-info-events grey-row">
           <span>Events:</span>
         </div>
-        <div class="match-details-events black-row">
-          <span class="details-time">41'</span>
-          <div class="match-players-details">
-            <span class="details-home">
-              <span class="details-player">Lorem</span>
-            </span>
-            <span class="details-center">0 </span>
-              <span>-</span>
-            </span>1</span>
-            <span class="details-away">
-              <span class="details-player">Ipsum</span>
-            </span>
-
-          </div>
-          <div class="empty">just empty space</div>
-        </div>
+        <div class="allEvents"></div>
+        
         <div></div>
         <div class="match-details-info grey-row">
           <span>Match Info:</span>
         </div>
         <div class="match-info-black-row">
           <div class="match-details-referee black-row referee-venue">
-            Referee: <span class="referee">Keith Stroud</span>
+            Referee: <span class="referee"></span>
           </div>
-          <div class="match-details-venue black-row referee-venue">Venue: <span class="venue">The Hawthorns</span></div>
+          <div class="match-details-venue black-row referee-venue">Venue: <span class="venue"></span></div>
         </div>
       </section>
          <section id="table" class="tab-content">
@@ -259,22 +247,8 @@
         <a href="#">h2h</a>
         <a href="#">Preston North End</a>
         </div> -->
-        <div class="h2h-stage-wrapper">
-            England Championship
-          </div>
-          <div class="h2h-match-list">
-            <div class="match-list-info">
-              <div class="match-list-date">2021</div>
-              <div>FT</div>
-            </div>
-            <div class="match-list-teams">
-              <div>West Bromwich</div>
-              <div>Preston North End</div>
-            </div>
-            <div class="match-list-scores">
-              <div class="home-score">1</div>
-              <div class="away-score">2</div>
-            </div>
+          <div class="h2h-match">
+            
           </div>
         
       </section>

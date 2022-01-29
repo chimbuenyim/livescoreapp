@@ -53,6 +53,11 @@ justify-content: space-between;
 .match-players-details span {
   padding: 0 5px;
 }
+.match-players-details{
+  display: flex;
+  justify-content: center;
+  width:100%;
+}
 .grey-row {
   background-color: #212121;
   font-size: 0.98rem;
@@ -222,7 +227,7 @@ tr td {
   font-size: 13px;
 }
 .match-list-info{
-  width: 30px;
+  width: 100px;
   text-align: center;
 }
 .match-list-info div{
@@ -263,4 +268,23 @@ color: orange !important;
   .empty{
     display: none;
   }
+}
+
+/* Extras */
+.details{
+  flex:1
+}
+.details-center,.away-score,.dash{
+  display: inline-block;
+  width:5px
+}
+.details-home,.details-away{
+  flex:5;
+  display: flex;
+}
+.details-home{
+  justify-content: flex-end;
+}
+.details-away{
+  justify-content: flex-start;
 }

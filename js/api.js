@@ -39,6 +39,10 @@ class LivescoresData {
     })
     return fixtures
   }
+  getFixture(fixture_id){
+    let fixture = this.fixtures.filter(fixture => fixture.event_key == fixture_id)
+    return fixture[0]
+  }
   leagueId(league_name){
     return this.leagues.filter((league) => {
         return league.league_name == league_name
@@ -47,12 +51,19 @@ class LivescoresData {
   async getAllFixtures() {
     let time = new Date()
     let fromDate = '2022-01-' + (time.getDate() - 3)
-    let toDate = '2022-01-' + (time.getDate() + 3)
+    let toDate = '2022-02-' + ((time.getDate() + 3)%31)
     let fixtures = (
       await this.fetchData({ met: 'Fixtures', from: fromDate, to: toDate })
     ).result
+    console.log(fixtures)
     this.fixtures = fixtures
     return fixtures
+  }
+  async geth2h(id1,id2){
+    return (await this.fetchData({met:'H2H',firstTeamId:id1,secondTeamId:id2})).result
+  }
+  async gettable(id){
+    return (await this.fetchData({met:'Standings',leagueId:id})).result
   }
 }
 
