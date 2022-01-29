@@ -4,6 +4,8 @@ class LivescoresData {
   constructor(apiKey) {
     this.apiKey = apiKey
     this.apiUrl = 'https://apiv2.allsportsapi.com/football/'
+    this.leagues = []
+    this.fixtures = []
   }
   async fetchData(criteria) {
     let query = ''
@@ -18,6 +20,7 @@ class LivescoresData {
   }
   async getLeagues(country_key) {
     let leagues = (await this.fetchData({ met: 'Leagues' })).result
+    this.leagues = leagues
     let toReturn = leagues
       .filter((league) => {
         return league.country_key == country_key
@@ -27,29 +30,28 @@ class LivescoresData {
       })
     return toReturn
   }
-  async getFixtures(league_id) {
-    let time = new Date()
-    let fromDate = '2022-01-' + (time.getDay() - 7)
-    let toDate = '2022-01-' + (time.getDay() + 7)
-    let fixtures = (
-      await this.fetchData({ met: 'Fixtures', from: fromDate, to: toDate })
-    ).result
-    let live = []
-    fixtures = fixtures.filter((fixture) => {
+  async getAllLeagues(){
+    return (await this.fetchData({ met: 'Leagues' })).result
+  }
+  getFixtures(league_id) {
+    let fixtures = this.fixtures.filter((fixture) => {
       return fixture.league_key == league_id
     })
-    live = fixtures.filter((fixture) => {
-      return fixture.league_key == league_id && fixture.event_live == '1'
-    })
-    return { fixtures: fixtures, live: live }
+    return fixtures
+  }
+  leagueId(league_name){
+    return this.leagues.filter((league) => {
+        return league.league_name == league_name
+      })[0].league_key
   }
   async getAllFixtures() {
     let time = new Date()
-    let fromDate = '2022-01-' + (time.getDay() - 3)
-    let toDate = '2022-01-' + (time.getDay() + 3)
+    let fromDate = '2022-01-' + (time.getDate() - 3)
+    let toDate = '2022-01-' + (time.getDate() + 3)
     let fixtures = (
       await this.fetchData({ met: 'Fixtures', from: fromDate, to: toDate })
     ).result
+    this.fixtures = fixtures
     return fixtures
   }
 }

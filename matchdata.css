@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: #111111;
+  color: white;
+}
+.match-details-score {
+  display: flex;
+  border: solid #212121;
+  border-width: 0 0 1px;
+  flex-wrap: nowrap;
+  font-size: 15px;
+  padding: 10px 40px;
+  justify-content: space-between;
+}
+.empty{
+  visibility: hidden;
+}
+.homevsaway {
+  display: flex;
+  justify-content: space-between;
+}
+.scores {
+  display: flex;
+  padding: 0 10px;
+}
+.scores span {
+  padding: 0 3px;
+}
+#match-details-tab {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-around;
+}
+#match-details-tab a {
+  color: white;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+#match-details-tab a:hover {
+  background-color: #6d6b6b;
+}
+.match-player-events{
+  display:flex;
+justify-content: space-between;
+}
+.match-players-details span {
+  padding: 0 5px;
+}
+.grey-row {
+  background-color: #212121;
+  font-size: 0.98rem;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+.black-row {
+  font-size: 0.8rem;
+  color: #fff;
+  justify-content: space-between;
+  padding: 10px;
+  border: solid #212121;
+  border-width: 0 0 1px;
+  display: flex;
+}
+.referee-venue {
+  display: block;
+  padding-left: 20px;
+}
+.referee-venue span {
+  padding-left: 5px;
+}
+.footer {
+  text-align: right;
+  font-size: 13px;
+  background-color: #212121;
+  padding: 10px;
+  color: #fff;
+}
+.footer a {
+  text-decoration: none;
+  color: orange;
+  padding: 5px;
+}
+
+/* table section */
+
+.league-header {
+  padding: 10px;
+  background-color: #212121;
+  color: white;
+}
+.match-table-tab {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-around;
+}
+
+.match-table-tab a {
+  color: white; 
+   text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+.match-table-tab a:hover {
+  background-color: #6d6b6b;
+  color: orange;
+}   
+table {
+  display: table;
+  border-collapse: separate;
+  width: 100%;
+  text-indent: initial;
+  border-spacing: 0px;
+  border-color: grey;
+  color: white;
+  font-size: 13px;
+}
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  min-height: 25px;
+  background-color: #212121;
+  font-size: 13px;
+  padding: 10px;
+  color: #fff;
+}
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+  min-height: 20px;
+}
+tr:nth-child(even) {
+  background-color: #212121;
+}
+.league-row-left {
+  text-align: right;
+  width: 30px;
+  border-right: 3px solid #6d6b6b;
+}
+#numbers-header {
+  text-align: right;
+}
+.league-row-center {
+  text-align: left;
+  border-right: 3px solid #6d6b6b;
+}
+.league-row-right {
+  text-align: center;
+  width: 40px;
+  min-height: 19px;
+  text-align: center;
+  padding: 0 5px;
+  border-right: 3px solid #6d6b6b;
+}
+.league-row-right:last-child {
+  border: none;
+}
+.fullword-hover {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(100%);
+  background-color: white;
+  color: black;
+  display: none;
+}
+th:hover .fullword-hover {
+  display: table;
+}
+tr td {
+  padding: 15px;
+}
+
+/* H2H Section */
+.h2h-header-tab {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-around;
+}
+.h2h-header-tab a {
+  color: white; 
+   text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+.h2h-header-tab a:hover {
+  background-color: #6d6b6b;
+  color: orange;
+}   
+.h2h-stage-wrapper{
+  padding: 10px;
+  background-color: #212121;
+  color: white;
+}
+.h2h-match-list{
+  display: flex;
+  /* display: table; */
+  border: none;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #6d6b6b;
+}
+.h2h-match-list div{
+  padding: 2px 5px;
+  font-size: 13px;
+}
+.match-list-info{
+  width: 30px;
+  text-align: center;
+}
+.match-list-info div{
+  text-align: center;
+}
+.match-list-teams{
+  text-align: left;
+}
+.match-list-scores{
+  text-align: right;
+  width: 20px;
+}
+
+#table{
+  display: none;
+}
+#league-table-home{
+  display: none;
+}
+#league-table-away{
+  display: none;
+}
+#h2h{
+  display: none;
+}
+.active{
+background-color: #6d6b6b;
+color: orange !important;
+}
+.show-content{
+  display: block;
+}
+.show-table-content{
+  display: table;
+}
+
+@media (max-width:450px) {
+  .empty{
+    display: none;
+  }
+}

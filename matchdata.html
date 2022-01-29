@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LiveScore</title>
+    <link rel="stylesheet" href="./matchdata.css" />
+  </head>
+  <body>
+    <div id="LiveScore" class="livescore">
+      <div class="match-details-score black-row">
+        <span class="scheduled-time">20:00</span>
+        <div class="homevsaway">
+          <span class="home-team">West Bromwich</span>
+          <div class="scores">
+            <span class="home-score">0</span>
+            <span>-</span>
+            <span class="away-score">0</span>
+          </div>
+          <span class="away-team">Preston North End</span>
+        </div>
+        <div class="empty">just empty space</div>
+      </div>
+      <div id="match-details-tab">
+        <a href="#" id='infos' class="match-details-tab-info tabs default active" >Info</a>
+       
+        <a href="#" id='tables' class="match-details-tab-table tabs">Table</a>
+      
+        <a href="#" id='h2hs' class="match-details-tab-h2h tabs"  >h2h</a>
+    
+      </div>
+      <section id="info" class="tab-content default">
+        <div class="football-info-events grey-row">
+          <span>Events:</span>
+        </div>
+        <div class="match-details-events black-row">
+          <span class="details-time">41'</span>
+          <div class="match-players-details">
+            <span class="details-home">
+              <span class="details-player">Lorem</span>
+            </span>
+            <span class="details-center">0 </span>
+              <span>-</span>
+            </span>1</span>
+            <span class="details-away">
+              <span class="details-player">Ipsum</span>
+            </span>
+
+          </div>
+          <div class="empty">just empty space</div>
+        </div>
+        <div></div>
+        <div class="match-details-info grey-row">
+          <span>Match Info:</span>
+        </div>
+        <div class="match-info-black-row">
+          <div class="match-details-referee black-row referee-venue">
+            Referee: <span class="referee">Keith Stroud</span>
+          </div>
+          <div class="match-details-venue black-row referee-venue">Venue: <span class="venue">The Hawthorns</span></div>
+        </div>
+      </section>
+         <section id="table" class="tab-content">
+          <div id="league-nav-header">
+            <div class="league-header">
+              <span class="league-name">Championship</span>
+            </div>
+            <div class="match-table-tab">
+           <a href="#league-table-total" id="total" class="match-table">Total</a> 
+          
+              <a href="#league-table-home" id="home" class="match-table">Home</a>
+         
+              <a href="#league-table-away" id="away" class="match-table">Away</a>
+            
+            </div>
+        <div class="league-table">
+          <table id="league-table-total" class="table-content">
+            <thead>
+              <tr id="league-table-tab">
+                <th class="league-row-left" id="numbers-header">#</th>
+                <th class="league-row-center" id="team-header">Team Name</th>
+                <th class="league-row-right" id="status-header">
+                  P
+                  <div class="fullword-hover">Played</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  W
+                  <div class="fullword-hover">Wins</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  D
+                  <div class="fullword-hover">Draws</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  L
+                  <div class="fullword-hover">Losses</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  F
+                  <div class="fullword-hover">Goals For</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  A
+                  <div class="fullword-hover">Goals Against</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  GD
+                  <div class="fullword-hover">Goals Difference</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  PTS
+                  <div class="fullword-hover">Points</div>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="league-table-body">
+              <tr id="league-row-total">
+                <td class="league-row-left"><span class="rank"></span></td>
+                <td class="league-row-center" id="league-column-name"></td>
+                <td class="league-row-right" id="league-column-played"></td>
+                <td class="league-row-right" id="league-column-wins"></td>
+                <td class="league-row-right" id="league-column-draws"></td>
+                <td class="league-row-right" id="league-column-losses"></td>
+                <td class="league-row-right" id="league-column-goalsfor"></td>
+                <td
+                  class="league-row-right"
+                  id="league-column-goalsagainst"
+                ></td>
+                <td class="league-row-right" id="league-column-goalsdiff"></td>
+                <td class="league-row-right" id="league-column-points"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table id="league-table-home" class="table-content">
+            <thead>
+              <tr id="league-table-tab">
+                <th class="league-row-left" id="numbers-header">#</th>
+                <th class="league-row-center" id="team-header">Team Name</th>
+                <th class="league-row-right" id="status-header">
+                  P
+                  <div class="fullword-hover">Played</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  W
+                  <div class="fullword-hover">Wins</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  D
+                  <div class="fullword-hover">Draws</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  L
+                  <div class="fullword-hover">Losses</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  F
+                  <div class="fullword-hover">Goals For</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  A
+                  <div class="fullword-hover">Goals Against</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  GD
+                  <div class="fullword-hover">Goals Difference</div>
+                </th>
+                <th class="league-row-right" id="status-header">
+                  PTS
+                  <div class="fullword-hover">Points</div>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="league-table-body">
+              <tr id="league-row-home">
+                <td class="league-row-left"><span class="rank"></span></td>
+                <td class="league-row-center" id="league-column-name"></td>
+                <td class="league-row-right" id="league-column-played"></td>
+                <td class="league-row-right" id="league-column-wins"></td>
+                <td class="league-row-right" id="league-column-draws"></td>
+                <td class="league-row-right" id="league-column-losses"></td>
+                <td class="league-row-right" id="league-column-goalsfor"></td>
+                <td
+                  class="league-row-right"
+                  id="league-column-goalsagainst"
+                ></td>
+                <td class="league-row-right" id="league-column-goalsdiff"></td>
+                <td class="league-row-right" id="league-column-points"></td>
+              </tr>
+            </tbody>
+            </table>
+
+            <table id="league-table-away" class="table-content">
+              <thead>
+                <tr id="league-table-tab">
+                  <th class="league-row-left" id="numbers-header">#</th>
+                  <th class="league-row-center" id="team-header">Team Name</th>
+                  <th class="league-row-right" id="status-header">
+                    P
+                    <div class="fullword-hover">Played</div>
+                  </th>
+                  <th class="league-row-right" id="status-header">
+                    W
+                    <div class="fullword-hover">Wins</div>
+                  </th>
+                  <th class="league-row-right" id="status-header">
+                    D
+                    <div class="fullword-hover">Draws</div>
+                  </th>
+                  <th class="league-row-right" id="status-header">
+                    L
+                    <div class="fullword-hover">Losses</div>
+                  </th>
+                  <th class="league-row-right" id="status-header">
+                    F
+                    <div class="fullword-hover">Goals For</div>
+                  </th>
+                  <th class="league-row-right" id="status-header">
+                    A
+                    <div class="fullword-hover">Goals Against</div>
+                  </th>
+                  <th class="league-row-right" id="status-header">
+                    GD
+                    <div class="fullword-hover">Goals Difference</div>
+                  </th>
+                  <th class="league-row-right" id="status-header">
+                    PTS
+                    <div class="fullword-hover">Points</div>
+                  </th>
+                </tr>
+              </thead>
+  
+              <tbody class="league-table-body">
+                <tr id="league-row-home">
+                  <td class="league-row-left"><span class="rank"></span></td>
+                  <td class="league-row-center" id="league-column-name"></td>
+                  <td class="league-row-right" id="league-column-played"></td>
+                  <td class="league-row-right" id="league-column-wins"></td>
+                  <td class="league-row-right" id="league-column-draws"></td>
+                  <td class="league-row-right" id="league-column-losses"></td>
+                  <td class="league-row-right" id="league-column-goalsfor"></td>
+                  <td
+                    class="league-row-right"
+                    id="league-column-goalsagainst"
+                  ></td>
+                  <td class="league-row-right" id="league-column-goalsdiff"></td>
+                  <td class="league-row-right" id="league-column-points"></td>
+                </tr>
+              </tbody>
+              </table>
+        </div>
+      </section>
+      <section id="h2h" class="tab-content">
+        <!-- <div class="h2h-header-tab">
+        <a href="#">West Bromwich</a>
+        <a href="#">h2h</a>
+        <a href="#">Preston North End</a>
+        </div> -->
+        <div class="h2h-stage-wrapper">
+            England Championship
+          </div>
+          <div class="h2h-match-list">
+            <div class="match-list-info">
+              <div class="match-list-date">2021</div>
+              <div>FT</div>
+            </div>
+            <div class="match-list-teams">
+              <div>West Bromwich</div>
+              <div>Preston North End</div>
+            </div>
+            <div class="match-list-scores">
+              <div class="home-score">1</div>
+              <div class="away-score">2</div>
+            </div>
+          </div>
+        
+      </section>
+      <div class="footer">
+        <span>©1998 - 2022 <a href="#">LiveScore</a></span>
+      </div>
+    </div>
+    <script src="./js/matchdata.js"></script>
+  </body>
+</html>
