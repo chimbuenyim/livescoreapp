@@ -144,11 +144,15 @@ body {
   border: solid #ff8a00 1px;
   border-width: 0 0 1px;
 }
+.displaySection{
+  width: 100%;
+  height: fit-content;
+  background-color:#333;
+}
 
 .dateDisplay {
   display: flex;
   flex-direction: row;
-
   border: solid #ff8a00;
   font-size: 24px;
   justify-content: space-around;
@@ -172,6 +176,20 @@ body {
   font-size: 11px;
   color: #aaa;
   font-family: Arial, Tahoma, sans-serif;
+}
+
+span:hover{
+    background-color:rgb(255, 185, 8) ;
+    color: #000;
+  
+}
+
+.dateDisplay > span{
+    text-decoration: none;
+    color:white;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: 900;
 }
 
 .card {
@@ -507,10 +525,10 @@ hr {
 
 
 .loader{
-    width: 200px;
-    height: 200px;
+    width: 50px;
+    height: 50px;
     border: none;
-    border-right: 1px solid coral;
+    border-right: 5px solid coral;
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
     animation: rotate 1s linear 0s infinite;
