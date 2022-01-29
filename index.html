@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
     <title>Get your Live Update</title>
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="./font/all.css" />
-    <script src="./font/all.js" async="false"></script>
-    <script src="./app.js" async="true"></script>
   </head>
   <body  class="body">
     <div class="bodyOverlay">
@@ -30,7 +29,7 @@
 
               <div class="searchInputContainer">
                 <div class="searchI">
-                  <i class="fas   /* display: none; */fa-search"></i>
+                  <i class="fas fa-search"></i>
                   <input type="search"
                   id="searchInput"
                  placeholder="Search your Fav! Team"
@@ -55,28 +54,28 @@
               <i class="fas fa-futbol tabIconView"></i>
               <span class="tabText">Live</span></a></div>
             <details>
-                <summary class="catergory">England</summary>
-                <li class="subcatergory"> <a href="">text</a></li>
-                <li class="subcatergory"> <a href="">text</a></li>
-                <li class="subcatergory"> <a href="">text</a></li>
+                <summary class="catergory country">Wordcup</summary>
+                <li class="subcatergory league"> <a>text</a></li>
+                <li class="subcatergory league"> <a>text</a></li>
+                <li class="subcatergory league"> <a>text</a></li>
             </details>
             <details>
-                <summary class="catergory"> Germany</summary>
-                <li class="subcatergory"> <a href="">text</a></li>
-                <li class="subcatergory"> <a href="">text</a></li>
-                <li class="subcatergory"> <a href="">text</a></li>
+                <summary class="catergory country">Germany</summary>
+                <li class="subcatergory league"> <a>text</a></li>
+                <li class="subcatergory league"> <a>text</a></li>
+                <li class="subcatergory league"> <a>text</a></li>
             </details>
             <details>
-                <summary class="catergory">Italy</summary>
-                <li class="subcatergory"> <a href="">text</a></li>
-                <li class="subcatergory"> <a href="">text</a></li>
-                <li class="subcatergory"> <a href="">text</a></li>
+                <summary class="catergory country">Italy</summary>
+                <li class="subcatergory league"> <a>text</a></li>
+                <li class="subcatergory league"> <a>text</a></li>
+                <li class="subcatergory league"> <a>text</a></li>
             </details>
             <details>
-                <summary class="catergory">Spain</summary>
-                <li class="subcatergory"> <a href="">text</a></li>
-                <li class="subcatergory"> <a href="">text</a></li>
-                <li class="subcatergory"> <a href="">text</a></li>
+                <summary class="catergory country">Spain</summary>
+                <li class="subcatergory league"> <a>text</a></li>
+                <li class="subcatergory league"> <a>text</a></li>
+                <li class="subcatergory league"> <a>text</a></li>
             </details>
           </div>
 
@@ -182,6 +181,30 @@
       <i class="fas fa-home mobileView-icon"></i>
       <span class="mobileMenuText">Home</span>
     </a>
+            <div class="dateDisplay">
+              <span class="clickable val-3"></span>
+              <span class="clickable val-2"></span>
+              <span class="clickable val-1"></span>
+              <span class="clickable today val-0">  Today </span>
+              <span class="clickable val+1"></span>
+              <span class="clickable val+2"></span>
+              <span class="clickable val+3"></span>
+            </div>
+            <div class="loader"></div>
+            <div class="container">
+
+            </div>
+    </div>
+<!-- ----- -->
+
+<!-- <div class="mobileMenu">
+    - <div class="catergories">
+      <i class="fas fa-align-right"></i> 
+      <span class="mobileMenuText">catergories</span>
+    </div> 
+    <div class="home">
+      <i class="fas fa-home mobileView-icon"></i> 
+      <span class="mobileMenuText home">Home</span>
     </div>
    
     <div class="live">  <a href="">
@@ -191,11 +214,16 @@
     </a>
     </div>
  
-    </div>
+    </div> -->
 
           </div>
             
-
-             
+          <script src="./app.js"></script>
+          <script src="./font/all.js"></script>
+          <script src="./font/all.js"></script>
+          <script src="./js/config.js" type="module"></script>
+          <script src="./js/index.js" type="module"></script>
+          <script src="./js/api.js" type="module"></script>
+          <script src="./js/populating_data.js" type="module"></script>
   </body>
 </html>
