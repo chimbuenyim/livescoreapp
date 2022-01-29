@@ -381,7 +381,6 @@ hr {
     text-align: center;
     font-size: 14px;
     /* background-color: darkred; */
-<<<<<<< HEAD
   }
 
   .home {
@@ -439,10 +438,9 @@ hr {
     font-size: 10px;
   }
 }
-=======
     
     
-   }
+   
    
    .home{
        margin-right: 6px;
@@ -506,7 +504,7 @@ hr {
    }
    
 
-}
+
 
 .loader{
     width: 200px;
@@ -529,4 +527,3 @@ hr {
         transform: rotate(359deg);
     }
 }
->>>>>>> c7750ef7d01544707afb5508911ea763a009df19
