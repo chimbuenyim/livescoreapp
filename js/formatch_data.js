@@ -1,11 +1,22 @@
 import livescore from './api.js'
-let f;
+let f,id,fixture,h2h,standings;
 window.addEventListener('load', async e => {
+    await main()
+    if(fixture.event_live == "1"){
+        setInterval(async () => {await main()},5000)
+    }
+})
+
+async function main(){
     f = await livescore.getAllFixtures()
-    let id = Object.fromEntries(window.location.href.split('?')[1].split('&').map(el => el.split('='))).id.replace('#','')
-    let fixture = livescore.getFixture(id)
-    let h2h = await livescore.geth2h(fixture.home_team_key,fixture.away_team_key)
-    let standings = await livescore.gettable(fixture.league_key)
+    id = Object.fromEntries(window.location.href.split('?')[1].split('&').map(el => el.split('='))).id.replace('#','')
+    fixture = livescore.getFixture(id)
+    h2h = await livescore.geth2h(fixture.home_team_key,fixture.away_team_key)
+    standings = await livescore.gettable(fixture.league_key)
+    fn()
+}
+
+function fn(){
 
     let allEvents = [...fixture.cards,...fixture.goalscorers]
     let events = allEvents.sort((a,b) => Number(eval(String(a.time))) - Number(eval(String(b.time))))
@@ -28,8 +39,7 @@ window.addEventListener('load', async e => {
     displayEvents(events)
     displayH2Hs(h2h.H2H)
     displayStandings(standings.total)
-})
-
+}
 function displayEvents(events){
     let eventsContainer = document.querySelector('.allEvents')
     for(let event of events){

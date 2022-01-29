@@ -1,4 +1,5 @@
 import livescore from './api.js'
+import allLeaguesTotally from './index.js'
 
 
 // this is vision's work. DO NOT TOUCH
@@ -9,7 +10,7 @@ let country,league,curday
 let allleagues = []
 async function getMatches(){
     // let leagues = (await livescore.getLeagues(8)).map(score => score.league_name)
-    let leaguesDisplay = ['La Liga', 'Serie A', 'WC Qualification South America']
+    let leaguesDisplay = allLeaguesTotally.slice(0,10)
     let matches = {}
     allf = await livescore.getAllFixtures()
     allleagues = await livescore.getAllLeagues()
@@ -76,11 +77,12 @@ function populateMatches(matches){
     }
 }
 
-function getSpecificMatches(date,country,curleague){
-    let leaguesDisplay = ['La Liga', 'Serie A', 'WC Qualification South America']
+function getSpecificMatches(date,country,curleague,islive=false){
+    let leaguesDisplay = !islive ? allLeaguesTotally.slice(0,10) : allLeaguesTotally
     let matches = {}
     let idx = 0
-    let valid = allMatches
+    console.log(allf)
+    let valid = allf
     if(country != null){
         leaguesDisplay = []
         valid = allf.filter(f => f.country_name == country)
@@ -89,28 +91,17 @@ function getSpecificMatches(date,country,curleague){
                 leaguesDisplay.push(f.league_name)
             }
         })
-        let p = [];
-        for(let league of leaguesDisplay){
-            p.push(valid.filter(f => f.league_name == league))
-        }
-        valid = p
-    }else if(curleague != null){
-        leaguesDisplay = []
-        valid = allf.filter(f => f.league_name == curleague)
-        valid.forEach(f => {
-            if(!leaguesDisplay.includes(f.league_name)){
-                leaguesDisplay.push(f.league_name)
-            }
-        })
-        let p = [];
-        for(let league of leaguesDisplay){
-            p.push(valid.filter(f => f.league_name == league))
-        }
-        valid = p
-    }
     
+    }else if(curleague != null){
+        valid = allf.filter(f => f.league_name == curleague)
+        console.log(valid);
+        leaguesDisplay = []
+        if(valid[0]){
+            leaguesDisplay.push(valid[0].league_name)
+        }
+    }
     for(let league of leaguesDisplay){
-        let validM = valid[idx].filter(match => match.event_date == String(date))
+        let validM = valid.filter(match => match.event_date == String(date) && match.league_name == league)
         matches[league] = validM
         idx += 1
     }
@@ -119,7 +110,7 @@ function getSpecificMatches(date,country,curleague){
 }
 
 function getAllMatches(){
-    let leaguesDisplay = ['La Liga', 'Serie A', 'WC Qualification South America']
+    let leaguesDisplay = allLeaguesTotally.slice(0,10)
     let matches = {}
     let idx = 0
     for(let league of leaguesDisplay){
@@ -143,30 +134,15 @@ window.addEventListener('load', e => {
     })
 })
 
-function populateCountries(){
-    let countries = []
-    let leaguesByCountry = {}
-    allleagues.forEach(el => {
-        if(!countries.includes(el.country_name)){
-            countries.push(el.country_name)
-            leaguesByCountry[el.country_name] = []
-        }
-        leaguesByCountry[el.country_name].push(el.league_name)
-    })
-    for(let [country,leagues] of Object.entries(leaguesByCountry)){
-
-    }
-}
 
 getMatches()
     .then(() => {
-        populateCountries()
         let live = document.querySelectorAll('.live')
         let home = document.querySelectorAll('.home')
         let countries = document.querySelectorAll('.country')
         let leagues = document.querySelectorAll('.league')
         live.forEach(el =>el.addEventListener('click',e => {
-            let result = getSpecificMatches('2022-01-'+ new Date().getDate())
+            let result = getSpecificMatches('2022-01-'+ new Date().getDate(),null,null,true)
             let nresult = {}
             for(let [league,matches] of Object.entries(result)){
                 let match = matches.filter(el => el.event_live == "1")
