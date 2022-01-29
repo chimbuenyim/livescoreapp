@@ -144,15 +144,11 @@ body {
   border: solid #ff8a00 1px;
   border-width: 0 0 1px;
 }
-.displaySection{
-  width: 100%;
-  height: fit-content;
-  background-color:#333;
-}
 
 .dateDisplay {
   display: flex;
   flex-direction: row;
+
   border: solid #ff8a00;
   font-size: 24px;
   justify-content: space-around;
@@ -176,20 +172,6 @@ body {
   font-size: 11px;
   color: #aaa;
   font-family: Arial, Tahoma, sans-serif;
-}
-
-span:hover{
-    background-color:rgb(255, 185, 8) ;
-    color: #000;
-  
-}
-
-.dateDisplay > span{
-    text-decoration: none;
-    color:white;
-    padding: 8px;
-    border-radius: 4px;
-    font-weight: 900;
 }
 
 .card {
@@ -399,66 +381,9 @@ hr {
     text-align: center;
     font-size: 14px;
     /* background-color: darkred; */
-  }
-
-  .home {
-    margin-right: 6px;
-  }
-
-  .homeScore {
-    margin-left: 6px;
-    font-weight: 900;
-    color: rgb(255, 185, 8);
-  }
-
-  #dash {
-    color: white;
-    font-weight: 900;
-    font-size: 10px;
-  }
-
-  .awayScore {
-    margin-right: 6px;
-    font-weight: 900;
-    color: rgb(255, 185, 8);
-  }
-
-  .away {
-    margin-left: 2px;
-  }
-
-  .score {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    width: 50px;
-  }
-
-  .mobileMenu {
-    display: block;
-    background-color: #000;
-    width: 100%;
-    height: 49px;
-    position: fixed;
-    bottom: 0;
-    border-radius: -30px;
-    display: flex;
-    flex-direction: row;
-    color: rgb(255, 185, 8);
-    font-size: 31px;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px;
-  }
-
-  .mobileMenuText {
-    font-size: 10px;
-  }
-}
     
     
-   
+   }
    
    .home{
        margin-right: 6px;
@@ -522,13 +447,13 @@ hr {
    }
    
 
-
+}
 
 .loader{
-    width: 50px;
-    height: 50px;
+    width: 200px;
+    height: 200px;
     border: none;
-    border-right: 5px solid coral;
+    border-right: 1px solid coral;
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
     animation: rotate 1s linear 0s infinite;
