@@ -30,7 +30,7 @@ class LivescoresData {
       })
     return toReturn
   }
-  async getAllLeagues(){
+  async getAllLeagues() {
     return (await this.fetchData({ met: 'Leagues' })).result
   }
   getFixtures(league_id) {
@@ -39,15 +39,15 @@ class LivescoresData {
     })
     return fixtures
   }
-  leagueId(league_name){
+  leagueId(league_name) {
     return this.leagues.filter((league) => {
-        return league.league_name == league_name
-      })[0].league_key
+      return league.league_name == league_name
+    })[0].league_key
   }
   async getAllFixtures() {
     let time = new Date()
     let fromDate = '2022-01-' + (time.getDate() - 3)
-    let toDate = '2022-01-' + (time.getDate() + 3)
+    let toDate = '2022-02-' + ((time.getDate() + 3) % 31)
     let fixtures = (
       await this.fetchData({ met: 'Fixtures', from: fromDate, to: toDate })
     ).result
