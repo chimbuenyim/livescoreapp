@@ -47,7 +47,7 @@ function populateMatches(matches){
             if(fixture){
                 let a = document.createElement('a')
                 let div = document.createElement('div')
-                a.href = '/livescoreapp/matchdata.html?id=' + fixture.event_key
+                a.href = '/matchdata.html?id=' + fixture.event_key
                 a.appendChild(div)
                 div.classList.add('fixture')
                 div.innerHTML += `
