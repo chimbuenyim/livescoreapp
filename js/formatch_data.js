@@ -3,7 +3,7 @@ let f,id,fixture,h2h,standings;
 window.addEventListener('load', async e => {
     await main()
     if(fixture.event_live == "1"){
-        setInterval(async () => {await main()},5000)
+        setInterval(async () => {await main()},60000)
     }
 })
 
@@ -42,6 +42,7 @@ function fn(){
 }
 function displayEvents(events){
     let eventsContainer = document.querySelector('.allEvents')
+    eventsContainer.innerHTML = ''
     for(let event of events){
         let div = document.createElement('div')
         div.classList.add('match-details-events')
