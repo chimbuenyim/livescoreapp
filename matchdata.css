@@ -185,9 +185,12 @@ tr:nth-child(even) {
   color: black;
   display: none;
 }
-th:hover .fullword-hover {
-  display: table;
+th:hover title{
+display: block;
 }
+/* th:hover .fullword-hover {
+  display: table;
+} */
 tr td {
   padding: 15px;
 }
