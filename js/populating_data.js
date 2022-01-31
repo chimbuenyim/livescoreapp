@@ -7,9 +7,10 @@ let leagueIds = []
 let allf = []
 let country, league, curday
 let allleagues = []
+let id = 10
 async function getMatches() {
   // let leagues = (await livescore.getLeagues(8)).map(score => score.league_name)
-  let leaguesDisplay = allLeaguesTotally.slice(0, 10)
+  let leaguesDisplay = allLeaguesTotally.slice(0, id)
   let matches = {}
   allf = await livescore.getAllFixtures()
   allleagues = await livescore.getAllLeagues()
@@ -81,13 +82,27 @@ function populateMatches(matches) {
         a.style.textDecoration = 'none'
       }
     }
+    
     display.appendChild(card)
   }
+  let span = document.createElement('span')
+  span.textContent = 'see more'
+  span.onclick = () => {
+    id += 10
+    main()
+  }
+  span.style.position = 'relative'
+  span.style.left = '50%'
+  span.style.transform = 'translateX(-50%)'
+  span.style.color = 'coral'
+  span.style.textDecoration = 'underline'
+  span.style.cursor = 'pointer'
+  display.appendChild(span)
 }
 
 function getSpecificMatches(date, country, curleague, islive = false) {
   let leaguesDisplay = !islive
-    ? allLeaguesTotally.slice(0, 10)
+    ? allLeaguesTotally.slice(0, id)
     : allLeaguesTotally
   let matches = {}
   let idx = 0
@@ -121,7 +136,7 @@ function getSpecificMatches(date, country, curleague, islive = false) {
 }
 
 function getAllMatches() {
-  let leaguesDisplay = allLeaguesTotally.slice(0, 10)
+  let leaguesDisplay = allLeaguesTotally.slice(0, id)
   let matches = {}
   let idx = 0
   for (let league of leaguesDisplay) {
@@ -145,9 +160,7 @@ window.addEventListener('load', (e) => {
 })
 
 main()
-setInterval(() => {
-  main()
-}, 60000)
+
 
 function main() {
   getMatches().then(() => {
