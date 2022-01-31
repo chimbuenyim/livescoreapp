@@ -82,22 +82,9 @@ function populateMatches(matches) {
         a.style.textDecoration = 'none'
       }
     }
-    
+
     display.appendChild(card)
   }
-  let span = document.createElement('span')
-  span.textContent = 'see more'
-  span.onclick = () => {
-    id += 10
-    main()
-  }
-  span.style.position = 'relative'
-  span.style.left = '50%'
-  span.style.transform = 'translateX(-50%)'
-  span.style.color = 'coral'
-  span.style.textDecoration = 'underline'
-  span.style.cursor = 'pointer'
-  display.appendChild(span)
 }
 
 function getSpecificMatches(date, country, curleague, islive = false) {
@@ -160,7 +147,6 @@ window.addEventListener('load', (e) => {
 })
 
 main()
-
 
 function main() {
   getMatches().then(() => {
