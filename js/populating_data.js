@@ -150,8 +150,8 @@ main()
 
 function main() {
   getMatches().then(() => {
-    let live = document.querySelectorAll('.live')
-    let home = document.querySelectorAll('.home')
+    let live = document.querySelectorAll('.livetab')
+    let home = document.querySelectorAll('.hometab')
     let countries = document.querySelectorAll('.country')
     let leagues = document.querySelectorAll('.league')
     live.forEach((el) =>
