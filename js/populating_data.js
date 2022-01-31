@@ -26,8 +26,6 @@ async function getMatches() {
 }
 
 function populateMatches(matches) {
-  let loader = document.querySelector('.loader')
-  loader.style.display = 'none'
   let display = document.querySelector('.container')
   let leagues = {}
   display.innerHTML = ''
@@ -72,7 +70,6 @@ function populateMatches(matches) {
     <span class="away">${fixture.event_away_team}</span>
 </div>
 
-<span class="time" style='width:150px'>${fixture.event_date}</span>
 
                 `
 
@@ -165,7 +162,8 @@ main()
 function main() {
   getMatches().then(() => {
     let live = document.querySelectorAll('.live')
-    let home = document.querySelectorAll('.home')
+    let home = document.querySelectorAll('.hometab')
+    console.log(home)
     let countries = document.querySelectorAll('.country')
     let leagues = document.querySelectorAll('.league')
     live.forEach((el) =>

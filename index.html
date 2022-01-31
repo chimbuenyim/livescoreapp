@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./font/all.css" />
 
   </head>
-  <body>
+  <body  class="body">
     <div class="bodyOverlay">
       <div class="mainContentContainer">
         <div class="header">
@@ -18,27 +18,55 @@
                 <marquee behavior="scroll" direction="left" scrollamount="30">
                    <span>GET YOUR LIVE SCORES.</span>   
                 </marquee>
+            </div> 
             </div>
-          
-        </div>
+            <div class="searchCont">
+
+               <div class="catergories">
+               <i class="fas fa-align-right"></i>
+              <span class="mobileMenuText">catergories</span>
+              </div>
+  
+
+              <div class="searchInputContainer">
+                <div class="searchI">
+                  <i class="fas fa-search"></i>
+                  <input type="search"
+                  id="searchInput"
+                 placeholder="Search your Fav! Team"
+                  > 
+                
+              </div>
+           
+              </div>
+
+            
+            </div>
+      
 
         <div class="mainContent">
-          <div class="catergoryContainer">
-            <div class="home catergory">Home</div>
-            <div class="live catergory">Live</div>
+          <div class="catergoryContainer catergoryContainerDisplay">
+            <div class="catergory  cat">
+              <a className='hometab'>
+                <i class="fas fa-home tabIconView"></i>
+                <span class="tabText">Home</span>
+            </a></div>
+            <div class="catergory  cat"><a href="./">
+              <i class="fas fa-futbol tabIconView"></i>
+              <span class="tabText">Live</span></a></div>
             <!-- <details>
                 <summary class="catergory country">Wordcup</summary>
                 <li class="subcatergory league"> <a>text</a></li>
                 <li class="subcatergory league"> <a>text</a></li>
                 <li class="subcatergory league"> <a>text</a></li>
-            </details>
-            <details>
+            </details> -->
+            <!-- <details>
                 <summary class="catergory country">Germany</summary>
                 <li class="subcatergory league"> <a>text</a></li>
                 <li class="subcatergory league"> <a>text</a></li>
                 <li class="subcatergory league"> <a>text</a></li>
-            </details>
-            <details>
+            </details> -->
+            <!-- <details>
                 <summary class="catergory country">Italy</summary>
                 <li class="subcatergory league"> <a>text</a></li>
                 <li class="subcatergory league"> <a>text</a></li>
@@ -49,10 +77,32 @@
                 <li class="subcatergory league"> <a>text</a></li>
                 <li class="subcatergory league"> <a>text</a></li>
                 <li class="subcatergory league"> <a>text</a></li>
-            </details> -->
+            </details>  -->
           </div>
 
           <div class="displaySection">
+              <div class="dateDisplay">
+                  <a><span class="date">Jan 23</span></a>
+                  <a><span class="date">Jan 24</span></a>
+                  <a> <span class="date">Jan 25</span></a>
+                  <a>  <span class="date">Today </span></a>
+                  <a> <span class="date">Jan 26</span></a>
+                  <a> <span class="date">Jan 27</span></a>
+                  <a> <span class="date"> Jan 28</span></a>
+              </div>
+
+ 
+              <div class="container"></div>
+            </div>
+
+<!-- ----- -->
+
+<!-- <div class="mobileMenu">
+    <div class="Home">
+      <a href="">
+      <i class="fas fa-home mobileView-icon"></i>
+      <span class="mobileMenuText">Home</span>
+    </a>
             <div class="dateDisplay">
               <span class="clickable val-3"></span>
               <span class="clickable val-2"></span>
@@ -66,33 +116,34 @@
             <div class="container">
 
             </div>
-    </div>
+    </div> -->
 <!-- ----- -->
 
-<div class="mobileMenu">
-    <div class="catergories">
+<!-- <div class="mobileMenu">
+    - <div class="catergories">
       <i class="fas fa-align-right"></i> 
       <span class="mobileMenuText">catergories</span>
-    </div>
+    </div> 
     <div class="home">
-      <i class="fas fa-home"></i>
+      <i class="fas fa-home mobileView-icon"></i> 
       <span class="mobileMenuText home">Home</span>
     </div>
-    <div class="live">
-      <i class="fas fa-futbol"></i>
-      <span class="mobileMenuText">Live</span>
+   
+    <div class="live">  <a href="">
+       <span class="mobileMenuText">
+       Live</span>
+      <i class="fas fa-futbol mobileView-icon"></i>
+    </a>
     </div>
-
-
-    </div>
+ 
+    </div> -->
 
           </div>
             
-
-          <script src="./font/all.js"gi></script>
-    
+          <script src="./app.js"></script>
+          <script src="./font/all.js"></script>
+          <script src="./font/all.js"></script>
           <script src="./js/config.js" type="module"></script>
-
           <script src="./js/index.js" type="module"></script>
           <script src="./js/api.js" type="module"></script>
           <script src="./js/populating_data.js" type="module"></script>
