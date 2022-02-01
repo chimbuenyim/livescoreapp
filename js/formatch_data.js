@@ -42,6 +42,7 @@ function fn(){
 }
 function displayEvents(events){
     let eventsContainer = document.querySelector('.allEvents')
+    eventsContainer.innerHTML = ''
     for(let event of events){
         let div = document.createElement('div')
         div.classList.add('match-details-events')
