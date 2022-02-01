@@ -55,7 +55,6 @@ class LivescoresData {
     let fixtures = (
       await this.fetchData({ met: 'Fixtures', from: fromDate, to: toDate })
     ).result
-    console.log(fixtures)
     this.fixtures = fixtures
     return fixtures
   }

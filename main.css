@@ -4,18 +4,42 @@
   box-sizing: border-box;
 }
 
-body {
-  background-image: url(./img/goal.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-  /* height: 160vh; */
-  position: relative;
-  animation-name: flipper;
-  animation-iteration-count: infinite;
-  animation-duration: 10000ms;
-  animation-direction: normal;
+#searchInput{
+    display:none;
+}
+
+
+.cardHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-decoration: none;
+  padding:2px;
+}
+
+
+/* .country{
+  color:red;
+  font-size: 14px;
+}
+
+.league{
+ color:#565654;
+} */
+
+body{
+
+ background-image: url(./img/goal.jpg);
+ background-size: cover;
+ background-position:center ;
+ background-repeat:no-repeat;
+ width:100%;
+ height: 160vh;
+ position: relative;
+ animation-name: flipper;
+ animation-iteration-count: infinite;
+ animation-duration: 10000ms;
+ animation-direction: normal;
 }
 
 @keyframes flipper {
@@ -39,10 +63,11 @@ body {
   background-color: rgba(0, 0, 0, 0.898);
 }
 
-.mainContentContainer {
-  width: 80vw;
-  height: 100%;
-  margin: auto;
+
+.mainContentContainer{
+    width: 80%;
+    height: auto;
+    margin: auto;
 }
 
 .header {
@@ -59,61 +84,145 @@ body {
   justify-content: space-around;
   font-size: 28px;
   font-weight: 900;
-
-  border: solid #ff8a00 1px;
-  /* border-width: 0 0 1px; */
-
-  /* color:rgb(138, 100, 4); */
-  color: white;
-  position: relative;
 }
 
-.headerOverlay {
-  position: absolute;
-  background-color: rgba(17, 11, 11, 0.556);
-  width: 100%;
-  height: 100%;
-  padding-top: 15px;
+.header{
+    width:100%;
+    height:50px;
+    border-bottom: 2px solid darkgoldenrod;
+    border-top: 2px solid darkgoldenrod;
+    background-image: url(./img/afcon.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+    /* justify-content: space-around; */
+    font-size: 24px;
+    font-weight: 900;
+   
+    /* color:rgb(138, 100, 4); */
+    color:white;
+   position: relative;
 }
 
-.mainContent {
-  width: 70vw;
-  height: 140vh;
-  background-color: black;
-  margin: auto;
-  margin-top: 40px;
-  display: flex;
-  flex-direction: row;
+
+.headerOverlay{
+    position: absolute;
+    background-color: rgba(17, 11, 11, 0.734);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* padding-top: 15px; */
+}
+
+
+
+.mainContent{
+    width: 70vw;
+    height: auto;
+    background-color: black;
+    margin: auto;
+    margin-top: 10px;
+    display:flex;
+    flex-direction: row;
+}
+
+
+.catergoryContainer{
+    width: 15vw;
+    height: 100%;
+    height: auto;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color:white;
+    
 }
 
 .catergoryContainer {
   width: 15vw;
-  height: max-content;
+  height: 100vh;
   background-color: #333;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
   /* font-size: 24px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color:white; */
 
-  font-size: 11px;
-  color: #fff;
-  font-family: Arial, Tahoma, sans-serif;
-  font-weight: 900;
+} 
+
+.catergoryContainer::-webkit-scrollbar{
+  width: 10px;
+  background-color:white;
+  padding-top: 5px;
 }
 
-.catergory {
-  line-height: 1.5;
-  background-color: #333;
-  border: 1px solid #000;
-  text-align: start;
-  padding: 5px;
-  cursor: pointer;
+
+.catergoryContainer::-webkit-scrollbar-track{
+  border-radius: 20px;
 }
 
-.catergory > a {
-  text-decoration: none;
-  color: white;
+
+.catergoryContainer::-webkit-scrollbar-thumb{
+  background-color: darkgoldenrod;
+  border-radius: 10px;
+}
+
+
+
+
+.tabIconView{
+    color:darkgoldenrod;
+    border-radius:75%;
+    padding: 3px;
+    background-color: #333;
+    font-size: 20px;
+}
+
+.cat{
+    height: 40px;
+    display:inline-flex;
+    align-items: center;
+    padding-left:3px;
+    display:flex;
+    flex-direction: row;
+    justify-self: flex-start;
+    align-items: center;
+    border-left: 2px solid #333;
+    border-top: 1px solid #333;
+    border-radius:4px;
+}
+
+.tabText{
+  padding-top: 200px;
+}
+
+
+.catergory{
+  line-height: 2;
+    background-color: #000;
+ border-bottom: 3px solid #333;
+    text-align: start;
+    cursor: pointer;
+    padding-left:4px;
+  
+}
+
+
+
+.catergory  > a{
+    text-decoration: none;
+    color: white;
+}
+
+
+.catergory:active{
+    border-left: 4px solid darkgoldenrod;
 }
 
 .catergory:active {
@@ -138,24 +247,31 @@ body {
 
 .displaySection {
   width: 100%;
-  height: 100%;
-  background-color: #333;
-  border: solid #ff8a00 1px;
-  border-width: 0 0 1px;
+  height: 100vh;
+  background-color:#333;
+  margin:auto;
 }
 
-.dateDisplay {
-  display: flex;
-  flex-direction: row;
-  color: #fff;
-  cursor: pointer;
-  border: solid #ff8a00;
-  font-size: 24px;
-  justify-content: space-around;
-  height: 45px;
-  align-items: center;
-  background-color: #000;
-  border-width: 0 0 1px;
+
+.dateDisplay{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid rgb(255, 185, 8);
+    border-top: 2px solid rgb(255, 185, 8);
+    font-size: 14px;
+    justify-content: space-around;
+    height: 24px;
+    align-items: center;
+    background-color: #000;
+    width:99%;
+    margin:auto;
+    margin-top:3px;
+}
+
+
+.dateDisplay a{
+   color:white;
+   text-decoration: none;
 }
 
 .dateDisplay span:hover {
@@ -163,13 +279,12 @@ body {
   color: #000;
 }
 
-.dateDisplay span {
-  padding: 8px;
-  border-radius: 4px;
-  font-weight: 900;
-  font-size: 11px;
-  color: #aaa;
-  font-family: Arial, Tahoma, sans-serif;
+.dateDisplay > span{
+    text-decoration: none;
+    color:white;
+    padding: 3px;
+    border-radius: 4px;
+    font-weight: 900;
 }
 
 .card {
@@ -182,12 +297,18 @@ body {
   /* background-color: darkgreen; */
 }
 
-.cardHeader {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 9px;
-  background-color: #333;
+
+.card{
+ width:99%;
+ height: auto;
+ color: white;
+ margin:auto;
+ border-left: 5px solid darkgoldenrod;
+ border-right: 5px solid darkgoldenrod;
+ margin-top: 4px;
+ border-radius: 4px;
+ border-top: 2px solid #000;
+ /* background-color: darkgreen; */
 }
 
 .title {
@@ -200,31 +321,43 @@ body {
   font-family: Arial, Tahoma, sans-serif;
 }
 
-.headerDate {
-  /* font-size: 20px; */
-  font-weight: 400;
-  text-transform: uppercase;
 
-  font-size: 11px;
-  font-family: Arial, Tahoma, sans-serif;
+  
+
+.title{
+ text-transform: uppercase;
+ text-decoration: underline;
+ font-size: 13px;
+ font-weight: 400;
+ font-family:'Segoe UI', 
+ Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.fixture {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #000;
-  width: 100%;
-  height: 80px;
+.headerDate{
+ font-size: 12px;
+ font-weight: 900;
+ text-transform: lowercase;
 }
 
-.time {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  align-items: center;
-  /* font-size: 20px; */
-  padding: 8px;
+.fixture{
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ background-color: #000;
+ width: 100%;
+ height: 25px;
+ font-family:'Segoe UI', 
+ Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.time{
+
+    display: flex;
+    justify-content: flex-start;
+ flex-direction: row;
+ align-items: center;
+ font-size: 12px;
+ padding:8px;
 
   font-size: 11px;
   color: #aaa;
@@ -240,30 +373,59 @@ body {
   text-align: center;
   /* font-size: 20px; */
   /* background-color: darkred; */
+}
+.matchFixture{
 
-  font-size: 11px;
-  color: #aaa;
-  font-family: Arial, Tahoma, sans-serif;
+ /* background-color: darkred; */
+ text-decoration: none;
+ color:white;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: flex-start;
+ width:80%;
+ font-size: 12px;
+ padding-left:3px;
+ font-family:'Segoe UI', 
+ Tahoma, Geneva, Verdana, sans-serif;
+ /* background-color: red; */
+ 
 }
 
-hr {
-  color: #aaa;
-  font-family: Arial, Tahoma, sans-serif;
+
+.matchFixture a{
+ text-decoration: none;
+ color:white;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: flex-start;
+ width:80%;
+ font-size: 12px;
+ padding-left:3px;
+ font-family:'Segoe UI', 
+ Tahoma, Geneva, Verdana, sans-serif;
+ /* background-color: red; */
+ 
 }
+
+
 
 .home {
   margin-right: 6px;
 }
 
-.homeScore {
-  margin-left: 6px;
+#dash{
+  color:rgb(177, 176, 166);
   font-weight: 900;
-  /* color: rgb(255, 185, 8); */
-
-  font-size: 11px;
-  color: #fff;
-  font-family: Arial, Tahoma, sans-serif;
+  font-size: 20px;
+  padding-bottom: 5px;
 }
+
+  /* font-size: 11px;
+  color: #fff;
+  font-family: Arial, Tahoma, sans-serif; */
+
 
 #dash {
   color: white;
@@ -297,11 +459,14 @@ hr {
   width: 50px;
 }
 
-.mobileMenu {
-  display: none;
+.searchCont{
+    display:none;
 }
 
+
+
 @media screen and (max-width: 600px) {
+
   .mainContentContainer {
     width: 100%;
     background-color: transparent;
@@ -309,7 +474,22 @@ hr {
 
   .header {
     width: 100%;
-  }
+}
+
+ body{
+
+ background-image: url(./img/goal.jpg);
+ background-size: cover;
+ background-position:center ;
+ background-repeat:no-repeat;
+ width:100%;
+ height: 120vh;
+ position: relative;
+ animation-name: flipper;
+ 
+}
+
+
 
   body {
     background-image: url(./img/goal.jpg);
@@ -326,47 +506,100 @@ hr {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.898);
-  }
+    background-color: rgba(0, 0, 0, 0.755);
+}
 
-  .mainContent {
-    width: 100%;
-  }
 
-  .catergoryContainer {
+
+ .mainContent{
+     width: 100%;
+ }
+
+
+ .catergoryContainer{
+     display: block;
+     display:none;
+     position: absolute;
+     width: 50%;
+     height: 50%;
+     left:10px;
+     top:83px;
+     background-color: rgba(184, 135, 11, 0.933);
+     display: flex;
+     flex-direction: column;
+     font-size: 10px;
+     font-family:Verdana, Geneva, Tahoma, sans-serif;
+     color:white;
+     padding: 7px;
+     border-radius:10px;
+     border-left:  1px solid #000;
+     border-right:  1px solid #000;
+     overflow-y:scroll;
+     
+ }
+
+
+  .catergoryContainerDisplay{
+     display: none;
+ } 
+
+ 
+
+ 
+
+  /* .catergoryContainer {
     display: none;
-  }
+  } */
 
-  .displaySection {
-    width: 100%;
-  }
 
-  .dateDisplay {
+ .card{
+    width:99%;
+    height: auto;
+    color: white;
+    margin:auto;
+    border-left: 2.5px solid darkgoldenrod;
+    border-right: 2.5px solid darkgoldenrod;
+    margin-top: 9px;
+    border-radius: 4px;
+    border-top: 2px solid #000;
+    /* background-color: darkgreen; */
+   }
+   
+
+ .dateDisplay{
+     width: 100%;
+    }
+
+  /* .dateDisplay {
     width: 100%;
-  }
+  } */
 
   .dateDisplay a {
     font-size: 14px;
-  }
+    color:white;
+    text-decoration: none;
+}
+
 
   .title {
     text-transform: uppercase;
     text-decoration: underline;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 400;
   }
 
   .time {
     display: flex;
     justify-content: flex-start;
-    flex-direction: row;
-    align-items: center;
-    font-size: 14px;
-    padding: 8px;
+  flex-direction: row;
+  align-items: center;
+  font-size: 10px;
+  padding:8px;
+
   }
 
   .headerDate {
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 400;
     text-transform: uppercase;
   }
@@ -378,41 +611,225 @@ hr {
     justify-content: center;
     width: 80%;
     text-align: center;
-    font-size: 14px;
-    /* background-color: darkred; */
-  }
-
-  .home {
-    margin-right: 6px;
-  }
-
-  .homeScore {
-    margin-left: 6px;
-    font-weight: 900;
-    color: rgb(255, 185, 8);
-  }
-
-  #dash {
-    color: white;
-    font-weight: 900;
     font-size: 10px;
+    /* background-color: darkred; */
+    
+    
+   }
+   
+   .home{
+       margin-right: 6px;
+   }
+   
+   
+   .homeScore{
+       margin-left: 6px;
+       font-weight: 900;
+       color:rgb(255, 185, 8);
+   }
+   
+   #dash{
+     color:white;
+     font-weight: 900;
+     font-size: 10px;
+   }
+   
+   
+   .awayScore{
+       margin-right: 6px;
+       font-weight: 900;
+       color:rgb(255, 185, 8);
+   }
+   
+   
+   .away{
+       margin-left: 2px;
+   }
+   
+   
+   .score{
+       display:flex;
+       flex-direction: row;
+       align-items: center;
+       justify-content: space-around;
+       width: 50px;
+   }
+
+
+   /* .mobileMenu{
+       display:block;
+       background-color:#000;
+       width:100%;
+       height:90px;
+       position:fixed;
+       bottom:0;
+       display: flex;
+       flex-direction: row; 
+       justify-content: space-evenly;
+       align-items: center;
+       padding-top: 20px;
+       padding-left: 4px;
+       padding-right: 4px;
+       
+   } */
+
+   .homeu{
+      display:flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      display:none;
+   }
+
+   .mobileView-icon{
+       background: #333;
+       padding: 5px;
+       /* width:50px;
+       height:50px; */
+       border-radius: 50%;
+       font-size:30px;
+       color:rgb(255, 185, 8);
+       display:none;
+   }
+
+
+
+   .catergories{
+    background-color: #000;
+    margin-top:2px;
+    /* height: 100%; */
+    padding:3px;
+    border-radius: 4px;
+    /* display: none; */
   }
 
-  .awayScore {
-    margin-right: 6px;
-    font-weight: 900;
-    color: rgb(255, 185, 8);
+  .mobileMenuText{
+    font-size: 14px;
   }
 
-  .away {
-    margin-left: 2px;
-  }
+   .catergories:hover{
+     background-color: #000;
+     color: rgb(255, 211, 101);
+   }
 
-  .score {
-    display: flex;
+
+   .fa-align-right{
+    color: darkgoldenrod;
+    transform: rotateX(180deg);
+    transform: rotateY(150deg);
+    font-size: 15px;
+   }
+
+   .searchInputContainer{
+  border:  1px  solid #000;
+  color: darkgoldenrod;
+  /* padding-bottom: 4px; */
+  margin-top:3px;
+  height:25px;
+  border-radius: 4px;
+  padding-left:  2px;
+   }
+
+   .searchCont{
+   
+    /* background-color:red; */
+    width: 100%;
+    height: 22px;
+    margin:auto;
+    margin-top: 7px;
+    display:flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
+    padding-right: 8px;
+    padding-left: 8px;
+    position: relative;
+  
+}
+
+.searchI{
+    /* background-color:rgba(218, 213, 213, 0.227); */
+    /* background-color:red; */
+    width: 100%;
+    height: 22px;
+    margin:auto;
+    margin-top: 2px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+ 
+    /* padding-top: 8px; */
+  
+}
+
+
+   #searchInput{
+       display: block;
+       background-color:rgba(218, 213, 213, 0.227);
+       /* background-color: transparent; */
+        width: 87%;
+       /* color: white; */
+       outline:none;
+       border: none;
+   }
+
+   #searchInput::placeholder{
+    /* color: white; */
+    color:black;
+    font-size:10px;
+    padding-left: 4px;
+   }
+
+   /* #searchInput:hover{
+    color: darkgoldenrod;
+    background-color: white;
+    outline: none;
+   } */
+
+
+   /* .searchIcon{
+    background: #000;
+    padding: 8px;
+    font-size: 20px;
+    /* width:50px;
+    height:50px; 
+    border-radius: 50%;
+    font-size:30px;
+    color:rgb(255, 185, 8);
+    border: 5px solid darkgoldenrod;  
+    display: none;
+   } */
+
+   /* .searchicon{
+       
+   } */
+
+
+   .mobileMenu::before{
+       content:'';
+       background-color:#333;
+       /* background-color:red; */
+       width: 100%;
+       height:50px;
+         position:absolute;
+         top:-18px;
+         left:0;
+         border-radius: 40%;
+         margin:0;
+   }
+
+
+   .mobileMenuText{
+       font-size: 8px;
+       color:white;
+       font-weight: 900;
+   }
+   
+
+
+
+.loader{
     width: 50px;
   }
 
@@ -436,6 +853,8 @@ hr {
   .mobileMenuText {
     font-size: 10px;
   }
+
+
 }
 
 .loader {
@@ -451,6 +870,8 @@ hr {
   top: 50vh;
   transform: translate(-50%, -50%);
 }
+
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -460,14 +881,30 @@ hr {
   }
 }
 
+
+
 .country{
   padding:.5em;
-  font-size: 1rem;
+  font-size: 13px;
   cursor: pointer;
+  background-color: black;
+  border-bottom: 2px solid #333;
 }
+
+
+
 .league{
   list-style: none;
   padding: 0.5em;
-  font-size: 1rem;
+  font-size: 12px;
   cursor: pointer;
+  background-color: #333;
+  border-bottom: 1px solid black;
+}
+
+.loader{
+  width:100px;
+  height:100px;
+  border-right-color: color;
+  border-right-width: 2px;
 }
