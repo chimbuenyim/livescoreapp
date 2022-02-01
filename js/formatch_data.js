@@ -65,7 +65,7 @@ function displayEvents(events) {
           event.score && event.home_scorer
             ? `Goal!!! ${event.home_scorer}`
             : event.card && event.home_fault
-            ? `${findImage(event.card)} ${event.home_fault}`
+            ? `${event.home_fault} ${findImage(event.card)}`
             : ''
         }</span>
     </span>

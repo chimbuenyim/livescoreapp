@@ -908,3 +908,7 @@ body{
   border-right-color: color;
   border-right-width: 2px;
 }
+
+.fixture:hover{
+  background-color: #111;
+}

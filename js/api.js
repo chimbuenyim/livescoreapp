@@ -37,6 +37,7 @@ class LivescoresData {
     let fixtures = this.fixtures.filter((fixture) => {
       return fixture.league_key == league_id
     })
+    console.log(league_id,this.fixtures)
     return fixtures
   }
   getFixture(fixture_id){
@@ -50,8 +51,8 @@ class LivescoresData {
   }
   async getAllFixtures() {
     let time = new Date()
-    let fromDate = '2022-01-' + (time.getDate() - 3)
-    let toDate = '2022-02-' + ((time.getDate() + 3)%31)
+    let fromDate = this.addDate(`${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`,-3)
+    let toDate = this.addDate(`${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`,3)
     let fixtures = (
       await this.fetchData({ met: 'Fixtures', from: fromDate, to: toDate })
     ).result
@@ -63,6 +64,19 @@ class LivescoresData {
   }
   async gettable(id){
     return (await this.fetchData({met:'Standings',leagueId:id})).result
+  }
+  addDate(date,num){
+    let days = [31,28,31,30,31,30,31,31,30,31,30,31]
+    let finalDate = (Number(date.split('-')[2]) + num) % days[Number(date.split('-')[1]) - 1]
+    if(finalDate <= 0){
+      finalDate = days[Number(date.split('-')[1]) - 2] + finalDate
+    }
+    let finalMonth = finalDate == Number(date.split('-')[2]) + num ? 
+                    date.split('-')[1] : num <= 0 ? 
+                    Number( date.split('-')[1]) - 1 : 
+                    Number( date.split('-')[1]) + 1
+    let finalYear = finalMonth > 12 ? Number(date.split('-')[0]) + 1 : date.split('-')[0]
+    return `${finalYear}-${`0${finalMonth}`.split('').reverse().slice(0,2).reverse().join('')}-${`0${finalDate}`.split('').reverse().slice(0,2).reverse().join('')}`
   }
 }
 

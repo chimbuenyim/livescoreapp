@@ -1,6 +1,5 @@
 import livescore from './api.js'
 import allLeaguesTotally from './index.js'
-
 // this is vision's work. DO NOT TOUCH
 let allMatches = []
 let leagueIds = []
@@ -41,13 +40,12 @@ function populateMatches(matches) {
     ${league}</span> 
     <span class="headerDate"></span>
 </header>`
-    console.log(card)
     for (let _ = 0; _ < 5; _++) {
       let fixture = matches[league][_]
       if (fixture) {
         let a = document.createElement('a')
         let div = document.createElement('div')
-        a.href = '/matchdata.html?id=' + fixture.event_key
+        a.href = 'matchdata.html?id=' + fixture.event_key
         a.appendChild(div)
         div.classList.add('fixture')
         div.innerHTML += `
@@ -76,7 +74,6 @@ function populateMatches(matches) {
 
                 `
 
-        console.log('card')
         card.appendChild(a)
         a.style.color = 'white'
         a.style.textDecoration = 'none'
@@ -93,7 +90,6 @@ function getSpecificMatches(date, country, curleague, islive = false) {
     : allLeaguesTotally
   let matches = {}
   let idx = 0
-  console.log(allf)
   let valid = allf
   if (country != null) {
     leaguesDisplay = []
@@ -105,7 +101,6 @@ function getSpecificMatches(date, country, curleague, islive = false) {
     })
   } else if (curleague != null) {
     valid = allf.filter((f) => f.league_name == curleague)
-    console.log(valid)
     leaguesDisplay = []
     if (valid[0]) {
       leaguesDisplay.push(valid[0].league_name)
@@ -118,7 +113,6 @@ function getSpecificMatches(date, country, curleague, islive = false) {
     matches[league] = validM
     idx += 1
   }
-  console.log(matches)
   return matches
 }
 
@@ -127,18 +121,18 @@ function getAllMatches() {
   let matches = {}
   let idx = 0
   for (let league of leaguesDisplay) {
-    let id = leagueIds[league]
-    matches[league] = allMatches[idx]
+    matches[league] = allf.filter(l => l.league_name == league)
     idx += 1
   }
-  console.log(matches)
+  console.log(allf)
   return matches
 }
 
 window.addEventListener('load', (e) => {
   let idx = -3
   document.querySelectorAll('.clickable').forEach((el) => {
-    el.textContent = plus('Jan ' + new Date().getDate(), idx)
+    let date = new Date()
+    el.textContent = dateToString(livescore.addDate(`2022-${date.getMonth() + 1}-${date.getDate()}`, idx))
     if (Array.from(el.classList).includes('today')) {
       el.textContent = 'Today'
     }
@@ -156,8 +150,9 @@ function main() {
     let leagues = document.querySelectorAll('.league')
     live.forEach((el) =>
       el.addEventListener('click', (e) => {
+        let date = new Date()
         let result = getSpecificMatches(
-          '2022-01-' + new Date().getDate(),
+          `${date.getFullYear()}-${`0${date.getMonth() + 1}`.split('').reverse().slice(0,2).reverse().join('')}-${`0${date.getDate()}`.split('').reverse().slice(0,2).reverse().join('')}`,
           null,
           null,
           true
@@ -193,24 +188,21 @@ function main() {
       })
     })
     let date = new Date()
-    let result = getSpecificMatches('2022-01-' + date.getDate())
+    let result = getSpecificMatches(`${date.getFullYear()}-${`0${date.getMonth() + 1}`.split('').reverse().slice(0,2).reverse().join('')}-${`0${date.getDate()}`.split('').reverse().slice(0,2).reverse().join('')}`)
+    console.log(result)
     populateMatches(result)
     document.querySelectorAll('.clickable').forEach((el) => {
       el.addEventListener('click', async (e) => {
-        console.log(e.target.classList)
-        let day = eval(
-          date.getDate() +
-            e.target.classList[e.target.classList.length - 1].split('val')[1]
-        )
-        curday = '2022-01-' + day
-        let result = getSpecificMatches('2022-01-' + day, country, league)
+        let now = '2022-' + (date.getMonth() + 1) + '-' + date.getDate()
+        curday = livescore.addDate(now,Number(e.target.classList[e.target.classList.length - 1].split('val')[1]))
+        let result = getSpecificMatches(curday, country, league)
         populateMatches(result)
       })
     })
   })
 }
 
-function plus(date, num) {
+function dateToString(date) {
   let datesMonths = [
     'Jan',
     'Feb',
@@ -225,31 +217,5 @@ function plus(date, num) {
     'Nov',
     'Dec',
   ]
-  let dates = {
-    Jan: 31,
-    Feb: 28,
-    Mar: 31,
-    Apr: 30,
-    May: 31,
-    Jun: 30,
-    Jul: 31,
-    Aug: 31,
-    Sep: 30,
-    Oct: 31,
-    Nov: 30,
-    Dec: 31,
-  }
-  let dateMonth = date.split(' ')[0]
-  let dateDay = Number(date.split(' ')[1])
-  let newDate = ''
-  dateDay += num
-  if (dateDay > dates[dateMonth]) {
-    newDate =
-      datesMonths[datesMonths.indexOf(dateMonth) + 1] +
-      ' ' +
-      (dateDay % dates[dateMonth])
-  } else {
-    newDate = dateMonth + ' ' + dateDay
-  }
-  return newDate
+  return `${datesMonths[Number(date.split('-')[1])-1]} ${Number(date.split('-')[2])}`
 }
