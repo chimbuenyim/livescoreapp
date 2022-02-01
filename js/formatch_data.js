@@ -5,7 +5,7 @@ window.addEventListener('load', async (e) => {
   if (fixture.event_live == '1') {
     setInterval(async () => {
       await main()
-    }, 60000)
+    }, 60000) 
   }
 })
 
